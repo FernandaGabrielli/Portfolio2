@@ -7,6 +7,9 @@ const GlobalStyle = createGlobalStyle`
     --oldpurple: #6554AF;
     --purple: #9575DE;
     --oldpink: #CC7178;
+    --snow: #E0E1D7;
+    --dark:  #121212;
+    --darkblue:  #282a36;
   }
 
   * {

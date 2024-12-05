@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FaHtml5, FaCss3Alt, FaBootstrap, FaSass, FaJs, FaReact, FaGitAlt, FaDocker, FaPython } from 'react-icons/fa';
-import { SiStyledcomponents, SiRedux, SiGulp, SiJest, SiCypress, SiDjango, SiTypescript } from 'react-icons/si';
+import { SiStyledcomponents, SiRedux, SiGulp, SiJest, SiCypress, SiDjango, SiTypescript, SiSqlalchemy, SiMicrosoftsqlserver, SiMysql, SiGrunt } from 'react-icons/si';
 import ProfileImage from '../../assets/myself.jpg'; // Substitua pelo caminho da sua imagem
 
 const AboutMeContainer = styled.section`
@@ -67,11 +67,16 @@ const Skills = styled.div`
     gap: 5px;
     color: white;
     font-weight: bold;
-    font-size: 14px; /* tamanho de fonte padrão */
+    font-size: 14px;
 
     svg {
       font-size: 24px;
       color: var(--pink);
+      transition: transform 0.3s ease; /
+
+      &:hover {
+        transform: scale(2); 
+      }
     }
   }
 `;
@@ -99,11 +104,16 @@ const ImageContainer = styled.div`
   justify-content: center;
 
   img {
-    width: 250px;
-    height: 250px;
+    width: 350px;
+    height: 350px;
     border-radius: 50%;
     object-fit: cover;
     border: 5px solid var(--purple);
+    transition: transform 0.5s ease; 
+
+      &:hover {
+        transform: scale(1.5); 
+      }
   }
 `;
 
@@ -139,7 +149,7 @@ const AboutMe: React.FC = () => {
             <li>
               <FaBootstrap />
               Bootstrap
-              <SkillBar>{renderSkillBar(4)}</SkillBar>
+              <SkillBar>{renderSkillBar(5)}</SkillBar>
             </li>
             <li>
               <FaSass />
@@ -178,7 +188,12 @@ const AboutMe: React.FC = () => {
             </li>
             <li>
               <SiGulp />
-              Gulp/Grunt
+              Gulp
+              <SkillBar>{renderSkillBar(3)}</SkillBar>
+            </li>
+            <li>
+              <SiGrunt />
+             Grunt
               <SkillBar>{renderSkillBar(3)}</SkillBar>
             </li>
             <li>
@@ -194,7 +209,7 @@ const AboutMe: React.FC = () => {
             <li>
               <FaPython />
               Python
-              <SkillBar>{renderSkillBar(3)}</SkillBar>
+              <SkillBar>{renderSkillBar(4)}</SkillBar>
             </li>
             <li>
               <FaDocker />
@@ -205,6 +220,11 @@ const AboutMe: React.FC = () => {
               <SiDjango />
               Django
               <SkillBar>{renderSkillBar(3)}</SkillBar>
+            </li>
+            <li>
+              <SiMysql />
+              MySql
+              <SkillBar>{renderSkillBar(1)}</SkillBar>
             </li>
           </ul>
         </Skills>

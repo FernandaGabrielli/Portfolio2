@@ -4,6 +4,8 @@ import "./App.css";
 import AboutMe from "./components/AboutMe/AboutMe.tsx";
 import Hero from "./components/Hero/Hero.tsx";
 import GlobalStyle from "./styles/GlobalStyle.ts";
+
+import ProjectsSection from "./components/ProjectsSection/ProjectsSection.tsx";
 import Header from "./components/Header/Header.tsx";
 
 
@@ -12,9 +14,10 @@ const App: React.FC = () => {
     <>
       <GlobalStyle />
     <div className="App">
-      <Header/>
+      <Header />
       <Hero />
       <AboutMe />
+      <ProjectsSection />
     </div>
     </>
   );
