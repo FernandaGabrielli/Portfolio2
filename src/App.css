@@ -1,0 +1,20 @@
+/* src/App.css */
+
+/* Tornar o componente App um contêiner de altura total */
+.App {
+  height: 100vh; /* 100% da altura da tela */
+  width: 100%;   /* 100% da largura da tela */
+  position: relative; /* Para permitir que os elementos filhos fiquem em posições absolutas */
+}
+
+/* Estilo para o título (h1) */
+.title {
+  position: absolute;
+  top: 50%;  /* Centraliza verticalmente */
+  left: 50%; /* Centraliza horizontalmente */
+  transform: translate(-50%, -50%); /* Para ajustar o centro exato */
+  color: white; /* Cor do texto */
+  font-size: 3rem; /* Tamanho da fonte */
+  font-family: 'Inter', sans-serif;
+  z-index: 10; /* Garante que o título fique acima das partículas */
+}
