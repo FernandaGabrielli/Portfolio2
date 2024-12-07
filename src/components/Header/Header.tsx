@@ -68,8 +68,9 @@ const ContactButton = styled.a`
 
 const Title = styled.h1`
   font-size: 2rem;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
   display: flex;
-  gap: 0.5rem;
+  gap: 0.5rem; /* Espaço entre as palavras e tags */
 
   span {
     &:first-child {
