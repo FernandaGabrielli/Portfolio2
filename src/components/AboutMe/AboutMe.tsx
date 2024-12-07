@@ -60,7 +60,7 @@ const Skills = styled.div`
     padding: 0;
   }
 
-  li {
+    li {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -72,11 +72,12 @@ const Skills = styled.div`
     svg {
       font-size: 24px;
       color: var(--pink);
-      transition: transform 0.3s ease; /
+      transition: transform 0.3s ease-in-out; /* Suaviza o efeito */
 
       &:hover {
-        transform: scale(2); 
+        transform: scale(2); /* Ajusta o tamanho do zoom */
       }
+
     }
   }
 `;

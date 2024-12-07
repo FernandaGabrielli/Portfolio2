@@ -151,7 +151,7 @@ const ProjectsSection: React.FC = () => {
     {
       name: 'Efood',
       description: 'Projeto delivery restaurante funcional utilizado como estudo de React e testes',
-      technologies: ['typescript', 'react', 'jest'],
+      technologies: ['TypeScript', 'React', 'Jest'],
       image: EfoodImage,
       deployLink: 'https://efoodreact.vercel.app/',
       repositoryLink: 'https://github.com/FernandaGabrielli/efoodreact',
@@ -159,7 +159,7 @@ const ProjectsSection: React.FC = () => {
     {
       name: 'Eplay',
       description: 'Projeto marketplace de games',
-      technologies: ['typescript', 'react', 'styled-components'],
+      technologies: ['TypeScript', 'React', 'Styled-Components'],
       image: EplayImage,
       deployLink: 'https://eplay-lime.vercel.app/',
       repositoryLink: 'https://github.com/FernandaGabrielli/Eplay',
