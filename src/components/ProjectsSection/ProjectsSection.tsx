@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import GabsxImage from '../../assets/GabsX.png';
+import GabsxGif from '../../assets/GabsX.gif';
 import EfoodImage from '../../assets/efood.png';
 import EplayImage from '../../assets/eplay.png';
+import EfoodGif from '../../assets/efood.gif';  
+import EplayGif from '../../assets/eplay.gif'; 
 
 const ProjectsContainer = styled.section`
   background-color: var(--dark); 
@@ -83,7 +86,7 @@ const ProjectCard = styled.div`
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap; /* Permite que a linha seja quebrada se necessário */
+      flex-wrap: wrap;
       margin-top: 10px;
     }
 
@@ -95,7 +98,7 @@ const ProjectCard = styled.div`
     .info {
       display: flex;
       justify-content: flex-start;
-      gap: 10px; /* Espaçamento entre os botões */
+      gap: 10px;
     }
 
     .deploy, .repository {
@@ -134,17 +137,21 @@ interface Project {
   description: string;
   technologies: string[];
   image: string;
+  gif: string;  // Adicionando uma propriedade para o gif
   deployLink: string;
   repositoryLink: string;
 }
 
 const ProjectsSection: React.FC = () => {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
   const projects: Project[] = [
     {
       name: 'GabsX',
       description: 'Projeto inspirado no Twitter, utilizado para praticar conhecimentos em Django',
       technologies: ['BootStrap', 'Django', 'Python'],
-      image: GabsxImage,
+      image: GabsxImage,  
+      gif: GabsxGif,  // GIF
       deployLink: 'https://fgabs.pythonanywhere.com/',
       repositoryLink: 'https://github.com/FernandaGabrielli/GabsX',
     },
@@ -152,7 +159,8 @@ const ProjectsSection: React.FC = () => {
       name: 'Efood',
       description: 'Projeto delivery restaurante funcional utilizado como estudo de React e testes',
       technologies: ['TypeScript', 'React', 'Jest'],
-      image: EfoodImage,
+      image: EfoodImage,  
+      gif: EfoodGif,  // GIF
       deployLink: 'https://efoodreact.vercel.app/',
       repositoryLink: 'https://github.com/FernandaGabrielli/efoodreact',
     },
@@ -160,7 +168,8 @@ const ProjectsSection: React.FC = () => {
       name: 'Eplay',
       description: 'Projeto marketplace de games',
       technologies: ['TypeScript', 'React', 'Styled-Components'],
-      image: EplayImage,
+      image: EplayImage,  
+      gif: EplayGif,  
       deployLink: 'https://eplay-lime.vercel.app/',
       repositoryLink: 'https://github.com/FernandaGabrielli/Eplay',
     },
@@ -176,8 +185,15 @@ const ProjectsSection: React.FC = () => {
       </Header>
       <ProjectsGrid>
         {projects.map((project, index) => (
-          <ProjectCard key={index}>
-            <img src={project.image} alt={`${project.name} screenshot`} />
+          <ProjectCard
+            key={index}
+            onMouseEnter={() => setHoveredIndex(index)}
+            onMouseLeave={() => setHoveredIndex(null)}
+          >
+            <img
+              src={hoveredIndex === index ? project.gif : project.image}  // Exibe o GIF ou a imagem estática
+              alt={`${project.name} screenshot`}
+            />
             <div>
               <h3>{project.name}</h3>
               <p>{project.description}</p>
