@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { FaHtml5, FaCss3Alt, FaBootstrap, FaSass, FaJs, FaReact, FaGitAlt, FaDocker, FaPython } from 'react-icons/fa';
 import { SiStyledcomponents, SiRedux, SiGulp, SiJest, SiCypress, SiDjango, SiTypescript, SiSqlalchemy, SiMicrosoftsqlserver, SiMysql, SiGrunt } from 'react-icons/si';
-import ProfileImage from '../../assets/myself.jpg'; // Substitua pelo caminho da sua imagem
+import ProfileImage from '../../assets/myself.jpg'; 
 
 const AboutMeContainer = styled.section`
   display: flex;
@@ -29,12 +29,12 @@ const TextContainer = styled.div`
     color: var(--pink);
     font-size: 36px;
     margin-bottom: 20px;
+    text-indent: 50px; /* Adiciona um recuo maior ao título */
   }
 
   p {
-    font-size: 18px;
-    line-height: 1.6;
-    margin-bottom: 20px;
+    font-size: 17px;
+    line-height: 1.5;
   }
 
   span {
@@ -60,7 +60,7 @@ const Skills = styled.div`
     padding: 0;
   }
 
-    li {
+  li {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -77,7 +77,6 @@ const Skills = styled.div`
       &:hover {
         transform: scale(2); /* Ajusta o tamanho do zoom */
       }
-
     }
   }
 `;
@@ -112,14 +111,13 @@ const ImageContainer = styled.div`
     border: 5px solid var(--purple);
     transition: transform 0.5s ease; 
 
-      &:hover {
-        transform: scale(1.5); 
-      }
+    &:hover {
+      transform: scale(1.5); 
+    }
   }
 `;
 
 const AboutMe: React.FC = () => {
-  // Função para renderizar as bolinhas com base no nível da habilidade
   const renderSkillBar = (level: number) => {
     return Array.from({ length: 5 }, (_, index) => (
       <span key={index} className={index < level ? 'active' : ''}></span>
@@ -129,11 +127,12 @@ const AboutMe: React.FC = () => {
   return (
     <AboutMeContainer>
       <TextContainer>
-        <h1>Fernanda Gabrielli.</h1>
-        <p>
-          Hi, my name is Fernanda Gabrielli. I am a professional <span>Full-Stack Developer</span>.
-        </p>
-        <p>Front-End | Back-End | Testing</p>
+        <h1>Quem</h1>
+            <p>
+      Pensar em mim é indispensável citar que sempre fui movida pela curiosidade e pela vontade constante de aprender. Ao longo da minha jornada, sempre valorizei o crescimento pessoal e profissional. Uma das experiências mais marcantes foram meus trabalhos voluntários com jovens, onde tive a oportunidade de incentivá-los a transformar suas vidas e buscar novas perspectivas.
+      <br />
+      Atualmente sou graduanda na Residência Tecnológica em Análise e Desenvolvimento de Sistemas e me dedico ao desenvolvimento com Python e React, sempre buscando aplicar meu aprendizado para criar soluções que façam a diferença na vida das pessoas. Acredito que a tecnologia tem um enorme poder de transformação, e é isso que me motiva a continuar crescendo.
+          </p>
         <Skills>
           <h3>Skills</h3>
           <ul>

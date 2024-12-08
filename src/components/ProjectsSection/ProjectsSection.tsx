@@ -18,8 +18,10 @@ const Header = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  
 
   h2 {
+    margin-top: 40px;
     font-size: 2rem;
     color: var(--snow); 
     span {
@@ -43,6 +45,8 @@ const ProjectsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
+  margin-bottom: 40px;
+
 `;
 
 const ProjectCard = styled.div`
@@ -50,7 +54,7 @@ const ProjectCard = styled.div`
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s;
+  transition: transform 0.3s ease;
   
   img {
     width: 100%;
@@ -128,7 +132,7 @@ const ProjectCard = styled.div`
   }
 
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
   }
 `;
 
@@ -137,7 +141,7 @@ interface Project {
   description: string;
   technologies: string[];
   image: string;
-  gif: string;  // Adicionando uma propriedade para o gif
+  gif: string;  
   deployLink: string;
   repositoryLink: string;
 }
@@ -160,7 +164,7 @@ const ProjectsSection: React.FC = () => {
       description: 'Projeto delivery restaurante funcional utilizado como estudo de React e testes',
       technologies: ['TypeScript', 'React', 'Jest'],
       image: EfoodImage,  
-      gif: EfoodGif,  // GIF
+      gif: EfoodGif,  
       deployLink: 'https://efoodreact.vercel.app/',
       repositoryLink: 'https://github.com/FernandaGabrielli/efoodreact',
     },
@@ -191,7 +195,7 @@ const ProjectsSection: React.FC = () => {
             onMouseLeave={() => setHoveredIndex(null)}
           >
             <img
-              src={hoveredIndex === index ? project.gif : project.image}  // Exibe o GIF ou a imagem estática
+              src={hoveredIndex === index ? project.gif : project.image}  
               alt={`${project.name} screenshot`}
             />
             <div>

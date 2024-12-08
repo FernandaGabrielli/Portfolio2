@@ -7,6 +7,7 @@ import GlobalStyle from "./styles/GlobalStyle.ts";
 
 import ProjectsSection from "./components/ProjectsSection/ProjectsSection.tsx";
 import Header from "./components/Header/Header.tsx";
+import Contact from "./components/Contact/Contact.tsx";
 
 
 const App: React.FC = () => {
@@ -18,6 +19,7 @@ const App: React.FC = () => {
       <Hero />
       <AboutMe />
       <ProjectsSection />
+      <Contact />
     </div>
     </>
   );
