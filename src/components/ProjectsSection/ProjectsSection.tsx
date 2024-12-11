@@ -180,7 +180,7 @@ const ProjectsSection: React.FC = () => {
   ];
 
   return (
-    <ProjectsContainer>
+    <ProjectsContainer id="ProjectsSection">
       <Header>
         <h2>
           Melhores <span>Projetos</span>

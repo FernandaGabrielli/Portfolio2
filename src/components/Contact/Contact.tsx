@@ -40,7 +40,6 @@ const ContactLinks = styled.div`
   display: flex;
   gap: 20px; /* Espaçamento entre os ícones */
   margin-top: 20px;
-  
 
   a {
     color: var(--pink);
@@ -112,16 +111,41 @@ const Contact: React.FC = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    
+    const data = new FormData();
+    data.append('name', formData.name);
+    data.append('email', formData.email);
+    data.append('subject', formData.subject);
+    data.append('message', formData.message);
+
+    try {
+      const response = await fetch('https://formspree.io/f/xeoqwrvz', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+        },
+        body: data,
+      });
+
+      if (response.ok) {
+        alert('Seu email foi enviado com sucesso!');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        alert('Houve um problema ao enviar seu email. Tente novamente mais tarde.');
+      }
+    } catch (error) {
+      console.error('Erro no envio:', error);
+      alert('Erro ao enviar a mensagem. Tente novamente mais tarde.');
+    }
   };
 
   return (
-    <ContactContainer>
+    <ContactContainer id="contact">
       <TextContainer>
         <h1>Onde me encontrar!</h1>
-        <span>Será um prazer conversar com você! </span> 
+        <span>Será um prazer conversar com você! </span>
         <span>Estou disponível nessas redes:</span>
         <ContactLinks>
           <a href="https://www.linkedin.com/in/fernandagabrielli" target="_blank" rel="noopener noreferrer">

@@ -20,13 +20,19 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: 'Inter', sans-serif;
-    background-color: var(--grey); /* Usando a variável */
-    color: var(--oldPink); /* Usando a variável */
+    background-color: var(--grey); 
+    color: var(--oldPink); 
   }
 
   h1, h2, h3 {
     margin-bottom: 15px;
   }
+
+
+  html {
+    scroll-behavior: smooth; 
+
 `;
+
 
 export default GlobalStyle;

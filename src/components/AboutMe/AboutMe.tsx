@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { FaHtml5, FaCss3Alt, FaBootstrap, FaSass, FaJs, FaReact, FaGitAlt, FaDocker, FaPython } from 'react-icons/fa';
 import { SiStyledcomponents, SiRedux, SiGulp, SiJest, SiCypress, SiDjango, SiTypescript, SiSqlalchemy, SiMicrosoftsqlserver, SiMysql, SiGrunt } from 'react-icons/si';
-import ProfileImage from '../../assets/myself.jpg'; 
+import ProfileImage from '../../assets/myself1.jpg'; 
 
 const AboutMeContainer = styled.section`
   display: flex;
@@ -125,9 +125,9 @@ const AboutMe: React.FC = () => {
   };
 
   return (
-    <AboutMeContainer>
+    <AboutMeContainer id="AboutMe">
       <TextContainer>
-        <h1>Quem</h1>
+        <h1>Quem sou?</h1>
             <p>
       Pensar em mim é indispensável citar que sempre fui movida pela curiosidade e pela vontade constante de aprender. Ao longo da minha jornada, sempre valorizei o crescimento pessoal e profissional. Uma das experiências mais marcantes foram meus trabalhos voluntários com jovens, onde tive a oportunidade de incentivá-los a transformar suas vidas e buscar novas perspectivas.
       <br />

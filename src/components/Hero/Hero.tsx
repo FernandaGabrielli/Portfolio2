@@ -204,12 +204,13 @@ const Hero: React.FC = () => {
   }, []);
 
   return (
-    <HeroSection>
+    <HeroSection id="Home">
       <div id="particles-js" style={{ position: 'absolute', width: '100%', height: '100%' }}></div>
       <CodeBlock>
         {`// Olá!
 // Meu nome é Fernanda Gabrielli
-// Sou desenvolvedora Full Stack React/Python`}
+// Sou desenvolvedora Full Stack React/Python
+// Deixa eu te falar mais sobre mim?`}
       </CodeBlock>
       <TextContainer>
         <Title>

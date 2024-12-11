@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import GlobalStyle from './../../styles/GlobalStyle';
 
-const HeaderStyle = styled.header`
+const HeaderStyle = styled.header<{ isVisible: boolean }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -13,6 +13,8 @@ const HeaderStyle = styled.header`
   left: 0;
   width: 100%;
   z-index: 10;
+  transition: top 0.3s;
+  top: ${({ isVisible }) => (isVisible ? '0' : '-100px')}; /* Esconde o header quando não visível */
 `;
 
 const NavContainer = styled.div`
@@ -59,18 +61,20 @@ const ContactButton = styled.a`
   transition: background-color 0.3s, transform 0.2s;
   display: inline-block;
   margin-left: 5px;
-  
+
   &:hover {
     background-color: var(--pink);
     transform: scale(1.05);
   }
 `;
 
-const Title = styled.h1`
+const Title = styled.a`
   font-size: 2rem;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
   display: flex;
   gap: 0.5rem; /* Espaço entre as palavras e tags */
+  text-decoration: none;
+  
 
   span {
     &:first-child {
@@ -83,19 +87,38 @@ const Title = styled.h1`
 `;
 
 const Header: React.FC = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 300) { // Ajuste o valor conforme necessário para o "hero"
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Limpeza do event listener ao desmontar
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <>
       <GlobalStyle />
-      <HeaderStyle>
-        <Title>
+      <HeaderStyle isVisible={isVisible}>
+        <Title href="#Home">
           <span>&lt;Fernanda</span>
           <span>Gabrielli/&gt;</span>
         </Title>
         <NavContainer>
-          <NavLinkSobre href="#sobre">Quem sou</NavLinkSobre>
-          <NavLink href="#projetos">Projetos</NavLink>
+          <NavLinkSobre href="#AboutMe">Quem sou</NavLinkSobre>
+          <NavLink href="#ProjectsSection">Projetos</NavLink>
         </NavContainer>
-        <ContactButton href="#contato">Contato</ContactButton>
+        <ContactButton href="#contact">Contato</ContactButton>
       </HeaderStyle>
     </>
   );
