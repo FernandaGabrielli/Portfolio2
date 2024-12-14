@@ -71,7 +71,7 @@ const Title = styled.h1`
   gap: 0.5rem;
   z-index: 2;
   position: relative;
-  color: var(--white);
+  color: var(--oldpurple);
   margin: 0;
   flex-grow: 0;
   flex-shrink: 0;
