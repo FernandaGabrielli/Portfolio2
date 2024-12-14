@@ -156,15 +156,15 @@ const Contact: React.FC = () => {
       });
 
       if (response.ok) {
-        alert(t('contact.form.successMessage'));
+        alert('✅');
         setFormData({ name: '', email: '', subject: '', message: '' });
       } else {
-        alert(t('contact.form.errorMessage'));
+        alert('❌⚠️');
       }
-    } catch (error) {
-      console.error('Erro no envio:', error);
-      alert(t('contact.form.errorMessage'));
-    }
+      } catch (error) {
+        console.error('Erro no envio:', error);
+        alert('❌⚠️');
+      }      
   };
 
   return (
