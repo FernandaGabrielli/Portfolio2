@@ -8,6 +8,7 @@ import ProjectsSection from "./components/ProjectsSection/ProjectsSection.tsx";
 import Header from "./components/Header/Header.tsx";
 import Contact from "./components/Contact/Contact.tsx";
 
+import './i18n';
 
 const App: React.FC = () => {
   return (

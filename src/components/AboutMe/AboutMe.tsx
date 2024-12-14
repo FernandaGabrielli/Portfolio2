@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { FaHtml5, FaCss3Alt, FaBootstrap, FaSass, FaJs, FaReact, FaGitAlt, FaDocker, FaPython } from 'react-icons/fa';
 import { SiStyledcomponents, SiRedux, SiGulp, SiJest, SiCypress, SiDjango, SiTypescript, SiSqlalchemy, SiMicrosoftsqlserver, SiMysql, SiGrunt } from 'react-icons/si';
 import ProfileImage from '../../assets/myself1.jpg'; 
+import { useTranslation } from 'react-i18next';
 
 const AboutMeContainer = styled.section`
   display: flex;
@@ -29,7 +30,7 @@ const TextContainer = styled.div`
     color: var(--pink);
     font-size: 36px;
     margin-bottom: 20px;
-    text-indent: 50px; /* Adiciona um recuo maior ao título */
+    text-indent: 50px;
   }
 
   p {
@@ -40,6 +41,32 @@ const TextContainer = styled.div`
   span {
     color: var(--purple);
     font-weight: bold;
+  }
+
+  .mobile-image {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    text-align: center;
+    padding-right: 0;
+    
+    h1 {
+      text-indent: 0;
+    }
+
+    .desktop-image {
+      display: none;
+    }
+
+    .mobile-image {
+      width: 20rem;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid var(--purple);
+      margin-top: 20px;
+      display: block;
+    }
   }
 `;
 
@@ -58,6 +85,10 @@ const Skills = styled.div`
     gap: 15px;
     list-style: none;
     padding: 0;
+
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(4, 1fr); 
+    }
   }
 
   li {
@@ -72,10 +103,10 @@ const Skills = styled.div`
     svg {
       font-size: 24px;
       color: var(--pink);
-      transition: transform 0.3s ease-in-out; /* Suaviza o efeito */
+      transition: transform 0.3s ease-in-out;
 
       &:hover {
-        transform: scale(2); /* Ajusta o tamanho do zoom */
+        transform: scale(2);
       }
     }
   }
@@ -103,21 +134,37 @@ const ImageContainer = styled.div`
   display: flex;
   justify-content: center;
 
-  img {
+  .desktop-image {
     width: 350px;
     height: 350px;
     border-radius: 50%;
     object-fit: cover;
     border: 5px solid var(--purple);
-    transition: transform 0.5s ease; 
+    transition: transform 1s ease, box-shadow 0.5s ease;
+    display: block;
 
     &:hover {
-      transform: scale(1.5); 
+      transform: scale(1.2);
+      box-shadow: 0 0 20px 5px var(--oldpurple), 0 0 30px 10px var(--oldpink);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .desktop-image {
+      display: none;
+    }
+
+    .mobile-image {
+      display: block;
+      height: 2rem;
     }
   }
 `;
 
+
 const AboutMe: React.FC = () => {
+  const { t } = useTranslation();
+
   const renderSkillBar = (level: number) => {
     return Array.from({ length: 5 }, (_, index) => (
       <span key={index} className={index < level ? 'active' : ''}></span>
@@ -127,14 +174,11 @@ const AboutMe: React.FC = () => {
   return (
     <AboutMeContainer id="AboutMe">
       <TextContainer>
-        <h1>Quem sou?</h1>
-            <p>
-      Pensar em mim é indispensável citar que sempre fui movida pela curiosidade e pela vontade constante de aprender. Ao longo da minha jornada, sempre valorizei o crescimento pessoal e profissional. Uma das experiências mais marcantes foram meus trabalhos voluntários com jovens, onde tive a oportunidade de incentivá-los a transformar suas vidas e buscar novas perspectivas.
-      <br />
-      Atualmente sou graduanda na Residência Tecnológica em Análise e Desenvolvimento de Sistemas e me dedico ao desenvolvimento com Python e React, sempre buscando aplicar meu aprendizado para criar soluções que façam a diferença na vida das pessoas. Acredito que a tecnologia tem um enorme poder de transformação, e é isso que me motiva a continuar crescendo.
-          </p>
+        <h1>{t('aboutMe.title')}</h1>
+        <p>{t('aboutMe.description')}</p>
+        <img className="mobile-image" src={ProfileImage} alt={t('aboutMe.altProfile')} />
         <Skills>
-          <h3>Skills</h3>
+          <h3>{t('aboutMe.skillsTitle')}</h3>
           <ul>
             <li>
               <FaHtml5 />
@@ -230,7 +274,7 @@ const AboutMe: React.FC = () => {
         </Skills>
       </TextContainer>
       <ImageContainer>
-        <img src={ProfileImage} alt="Profile" />
+        <img className="desktop-image" src={ProfileImage} alt={t('aboutMe.altProfile')} /> 
       </ImageContainer>
     </AboutMeContainer>
   );

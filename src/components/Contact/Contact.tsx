@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { FaLinkedin, FaGithub } from 'react-icons/fa'; // Importa os ícones
+import { FaLinkedin, FaGithub } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 
 const ContactContainer = styled.section`
   display: flex;
@@ -16,6 +17,7 @@ const ContactContainer = styled.section`
   @media (max-width: 768px) {
     flex-direction: column;
     text-align: center;
+    padding: 30px 20px;
   }
 `;
 
@@ -27,28 +29,41 @@ const TextContainer = styled.div`
     color: var(--pink);
     font-size: 36px;
     margin-bottom: 20px;
+
+    @media (max-width: 768px) {
+      font-size: 28px;
+    }
   }
 
   p {
     font-size: 18px;
     line-height: 1.6;
     margin-bottom: 20px;
+
+    @media (max-width: 768px) {
+      font-size: 16px;
+    }
   }
 `;
 
 const ContactLinks = styled.div`
   display: flex;
-  gap: 20px; /* Espaçamento entre os ícones */
+  gap: 20px;
   margin-top: 20px;
 
   a {
     color: var(--pink);
-    font-size: 50px; /* Ajusta o tamanho do ícone */
+    font-size: 50px;
     transition: color 0.3s ease-in-out;
 
     &:hover {
       color: var(--purple);
     }
+  }
+
+  @media (max-width: 768px) {
+    justify-content: center;
+    gap: 15px;
   }
 `;
 
@@ -77,6 +92,11 @@ const FormContainer = styled.div`
       border-color: var(--pink);
       outline: none;
     }
+
+    @media (max-width: 768px) {
+      font-size: 14px;
+      padding: 12px;
+    }
   }
 
   button {
@@ -92,10 +112,16 @@ const FormContainer = styled.div`
     &:hover {
       background-color: var(--purple);
     }
+
+    @media (max-width: 768px) {
+      font-size: 16px;
+      padding: 12px;
+    }
   }
 `;
 
 const Contact: React.FC = () => {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -130,23 +156,22 @@ const Contact: React.FC = () => {
       });
 
       if (response.ok) {
-        alert('Seu email foi enviado com sucesso!');
+        alert(t('contact.form.successMessage'));
         setFormData({ name: '', email: '', subject: '', message: '' });
       } else {
-        alert('Houve um problema ao enviar seu email. Tente novamente mais tarde.');
+        alert(t('contact.form.errorMessage'));
       }
     } catch (error) {
       console.error('Erro no envio:', error);
-      alert('Erro ao enviar a mensagem. Tente novamente mais tarde.');
+      alert(t('contact.form.errorMessage'));
     }
   };
 
   return (
     <ContactContainer id="contact">
       <TextContainer>
-        <h1>Onde me encontrar!</h1>
-        <span>Será um prazer conversar com você! </span>
-        <span>Estou disponível nessas redes:</span>
+        <h1>{t('contact.title')}</h1>
+        <p>{t('contact.description')}</p>
         <ContactLinks>
           <a href="https://www.linkedin.com/in/fernandagabrielli" target="_blank" rel="noopener noreferrer">
             <FaLinkedin />
@@ -161,7 +186,7 @@ const Contact: React.FC = () => {
           <input
             type="text"
             name="name"
-            placeholder="Seu nome"
+            placeholder={t('contact.form.name')}
             value={formData.name}
             onChange={handleChange}
             required
@@ -169,7 +194,7 @@ const Contact: React.FC = () => {
           <input
             type="email"
             name="email"
-            placeholder="Seu Email"
+            placeholder={t('contact.form.email')}
             value={formData.email}
             onChange={handleChange}
             required
@@ -177,20 +202,20 @@ const Contact: React.FC = () => {
           <input
             type="text"
             name="subject"
-            placeholder="Assunto"
+            placeholder={t('contact.form.subject')}
             value={formData.subject}
             onChange={handleChange}
             required
           />
           <textarea
             name="message"
-            placeholder="Sua Mensagem"
+            placeholder={t('contact.form.message')}
             value={formData.message}
             onChange={handleChange}
             rows={5}
             required
           />
-          <button type="submit">Enviar mensagem</button>
+          <button type="submit">{t('contact.viewMessage')}</button>
         </form>
       </FormContainer>
     </ContactContainer>

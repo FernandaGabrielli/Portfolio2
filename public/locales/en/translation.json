@@ -1,0 +1,57 @@
+{
+    "header": {
+      "title": "<Fernanda Gabrielli/>",
+      "who": "About Me",
+      "projects": "Projects",
+      "contact": "Contact"
+    },
+    "hero": {
+      "code": "// Hi!\n// My name is Fernanda Gabrielli\n// I am a Full Stack React/Python Developer\n// Let me tell you more about myself?",
+      "title": "<Fernanda Gabrielli/>",
+      "subtitle": "// A developer ",
+      "phrases": [
+        "who believes in the importance of constant learning, both in technology and languages.",
+        "who believes technology is not just about code, but about the possibility of changing the world.",
+        "who gets excited about the infinite possibilities that technology offers to innovate.",
+        "who sees every project as a chance to learn something new and contribute to something bigger.",
+        "who values the human perspective in everything she does.",
+        "who believes in the power of collaboration and the strength of social impact.",
+        "who has always been a dreamer and knew that giving up was never an option.",
+        "who is passionate about technology and the possibility of positively impacting people's daily lives."
+      ]
+    },
+    "aboutMe": {
+        "title": "Who am I?",
+        "description": "Thinking about myself, I must say that I have always been driven by curiosity and the constant desire to learn. Throughout my journey, I have always valued personal and professional growth. One of the most remarkable experiences was my volunteer work with young people, where I had the opportunity to encourage them to transform their lives and seek new perspectives.",
+        "skillsTitle": "Skills",
+        "altProfile": "I am a white woman with blonde hair, dark eyes, and dark eyebrows. I am wearing a black blouse and a silver chain over the blouse."
+      },
+    "projects": {
+    "title": "Best Projects",
+    "viewAll": "View all my projects",
+    "project1": {
+      "name": "GabsX",
+      "description": "A Twitter-inspired project, used to practice Django."
+    },
+    "project2": {
+      "name": "Efood",
+      "description": "A functional restaurant delivery project, used for studying React and testing frameworks."
+    },
+    "project3": {
+      "name": "Eplay",
+      "description": "A game marketplace project."
+    }
+  },
+  "contact": {
+    "title": "Where to find me?",
+    "description": "It will be a pleasure to talk to you! I'm available on these networks:",
+    "viewMessage": "Send message",
+    "form": {
+      "name": "Your name",
+      "email": "Your Email",
+      "subject": "Subject",
+      "message": "Your Message"
+    }
+  }
+}
+  

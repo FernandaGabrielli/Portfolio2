@@ -6,11 +6,16 @@ import EfoodImage from '../../assets/efood.png';
 import EplayImage from '../../assets/eplay.png';
 import EfoodGif from '../../assets/efood.gif';  
 import EplayGif from '../../assets/eplay.gif'; 
+import { useTranslation } from 'react-i18next';
 
 const ProjectsContainer = styled.section`
   background-color: var(--dark); 
   color: #fff;
   padding: 40px 50px;
+  
+  @media (max-width: 768px) {
+    padding: 30px 20px;
+  }
 `;
 
 const Header = styled.div`
@@ -19,7 +24,6 @@ const Header = styled.div`
   align-items: center;
   margin-bottom: 20px;
   
-
   h2 {
     margin-top: 40px;
     font-size: 2rem;
@@ -39,6 +43,17 @@ const Header = styled.div`
       color: var(--oldpink); 
     }
   }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    h2 {
+      font-size: 1.5rem;
+    }
+    a {
+      font-size: 1rem;
+    }
+  }
 `;
 
 const ProjectsGrid = styled.div`
@@ -47,6 +62,10 @@ const ProjectsGrid = styled.div`
   gap: 20px;
   margin-bottom: 40px;
 
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
 `;
 
 const ProjectCard = styled.div`
@@ -55,10 +74,10 @@ const ProjectCard = styled.div`
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
-  
+
   img {
     width: 100%;
-    height: 300px; 
+    height: 300px;
     object-fit: cover;
   }
 
@@ -134,6 +153,24 @@ const ProjectCard = styled.div`
   &:hover {
     transform: scale(1.1);
   }
+
+  @media (max-width: 768px) {
+    div {
+      padding: 10px;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+    }
+
+    p {
+      font-size: 0.8rem;
+    }
+
+    .deploy, .repository {
+      font-size: 0.8rem;
+    }
+  }
 `;
 
 interface Project {
@@ -147,21 +184,22 @@ interface Project {
 }
 
 const ProjectsSection: React.FC = () => {
+  const { t } = useTranslation();
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const projects: Project[] = [
     {
-      name: 'GabsX',
-      description: 'Projeto inspirado no Twitter, utilizado para praticar conhecimentos em Django',
+      name: t('projects.project1.name'),
+      description: t('projects.project1.description'),
       technologies: ['BootStrap', 'Django', 'Python'],
       image: GabsxImage,  
-      gif: GabsxGif,  // GIF
+      gif: GabsxGif,  
       deployLink: 'https://fgabs.pythonanywhere.com/',
       repositoryLink: 'https://github.com/FernandaGabrielli/GabsX',
     },
     {
-      name: 'Efood',
-      description: 'Projeto delivery restaurante funcional utilizado como estudo de React e testes',
+      name: t('projects.project2.name'),
+      description: t('projects.project2.description'),
       technologies: ['TypeScript', 'React', 'Jest'],
       image: EfoodImage,  
       gif: EfoodGif,  
@@ -169,8 +207,8 @@ const ProjectsSection: React.FC = () => {
       repositoryLink: 'https://github.com/FernandaGabrielli/efoodreact',
     },
     {
-      name: 'Eplay',
-      description: 'Projeto marketplace de games',
+      name: t('projects.project3.name'),
+      description: t('projects.project3.description'),
       technologies: ['TypeScript', 'React', 'Styled-Components'],
       image: EplayImage,  
       gif: EplayGif,  
@@ -183,9 +221,9 @@ const ProjectsSection: React.FC = () => {
     <ProjectsContainer id="ProjectsSection">
       <Header>
         <h2>
-          Melhores <span>Projetos</span>
+          {t('projects.title')}
         </h2>
-        <a href="https://github.com/FernandaGabrielli">Acesse todos os meus projetos &gt;</a>
+        <a href="https://github.com/FernandaGabrielli">{t('projects.viewAll')} &gt;</a>
       </Header>
       <ProjectsGrid>
         {projects.map((project, index) => (

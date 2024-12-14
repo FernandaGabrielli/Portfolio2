@@ -1,0 +1,57 @@
+{
+    "header": {
+      "title": "<Fernanda Gabrielli/>",
+      "who": "Quem sou",
+      "projects": "Projetos",
+      "contact": "Contato"
+    },
+    "hero": {
+      "code": "// Olá!\n// Meu nome é Fernanda Gabrielli\n// Sou desenvolvedora Full Stack React/Python\n// Deixa eu te falar mais sobre mim?",
+      "title": "<Fernanda Gabrielli/>",
+      "subtitle": "// Uma desenvolvedora ",
+      "phrases": [
+        "que acredita na importância do aprendizado constante, tanto em tecnologia quanto em idiomas.",
+        "que acredita que tecnologia não é só sobre código, mas sim sobre a possibilidade de mudar o mundo.",
+        "que se anima com as possibilidades infinitas que a tecnologia oferece para inovar.",
+        "que vê cada projeto como uma chance de aprender algo novo e contribuir com algo maior.",
+        "que enxerga a importância do olhar humano em tudo que faz.",
+        "que acredita no poder da colaboração e na força do impacto social.",
+        "que sempre foi sonhadora e que sempre soube que desistir não era uma opção.",
+        "que é apaixonada por tecnologia e na possibilidade de impactar positivamente o dia a dia das pessoas."
+      ]
+    },
+    "aboutMe": {
+    "title": "Quem sou?",
+    "description": "Pensar em mim é indispensável citar que sempre fui movida pela curiosidade e pela vontade constante de aprender. Ao longo da minha jornada, sempre valorizei o crescimento pessoal e profissional. Uma das experiências mais marcantes foram meus trabalhos voluntários com jovens, onde tive a oportunidade de incentivá-los a transformar suas vidas e buscar novas perspectivas.",
+    "skillsTitle": "Skills",
+    "altProfile": "Eu sou uma mulher branca, com cabelo loiro, olhos escuros e sobrancelha escura. Estou usando uma blusa preta e uma corrente prata em cima da blusa."
+  },
+  "projects": {
+    "title": "Melhores Projetos",
+    "viewAll": "Acesse todos os meus projetos",
+    "project1": {
+      "name": "GabsX",
+      "description": "Projeto inspirado no Twitter, utilizado para praticar conhecimentos em Django."
+    },
+    "project2": {
+      "name": "Efood",
+      "description": "Projeto delivery restaurante funcional utilizado como estudo de React e testes."
+    },
+    "project3": {
+      "name": "Eplay",
+      "description": "Projeto marketplace de games."
+    }
+},
+"contact": {
+    "title": "Onde me encontrar?",
+    "description": "Será um prazer conversar com você! Estou disponível nessas redes:",
+    "viewMessage": "Enviar mensagem",
+    "form": {
+      "name": "Seu nome",
+      "email": "Seu Email",
+      "subject": "Assunto",
+      "message": "Sua Mensagem"
+    }
+  }
+}
+  

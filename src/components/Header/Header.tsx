@@ -1,12 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
 import GlobalStyle from './../../styles/GlobalStyle';
+
+const FG = styled.a`
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--oldpurple);
+  text-decoration: none;
+  white-space: nowrap;
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
+`;
 
 const HeaderStyle = styled.header<{ isVisible: boolean }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 10px;
   background-color: var(--grey);
   position: fixed;
   top: 0;
@@ -14,112 +28,118 @@ const HeaderStyle = styled.header<{ isVisible: boolean }>`
   width: 100%;
   z-index: 10;
   transition: top 0.3s;
-  top: ${({ isVisible }) => (isVisible ? '0' : '-100px')}; /* Esconde o header quando não visível */
+  top: ${({ isVisible }) => (isVisible ? '0' : '-100px')};
+
+  @media (max-width: 768px) {
+    padding: 8px;
+  }
 `;
 
 const NavContainer = styled.div`
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 12px;
   flex: 1;
-  padding: 5px 0;
-  margin-right: 200px;
+  padding: 0;
+  margin-right: 50px;
+
+  @media (max-width: 768px) {
+    gap: 8px;
+    margin-right: 30px;
+  }
 `;
 
 const NavLink = styled.a`
   text-decoration: none;
   color: var(--oldpink);
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   transition: color 0.3s;
 
   &:hover {
     color: var(--pink);
   }
-`;
 
-const NavLinkSobre = styled.a`
-  text-decoration: none;
-  color: var(--oldpink);
-  font-weight: bold;
-  font-size: 1.2rem;
-  transition: color 0.3s;
-
-  &:hover {
-    color: var(--pink);
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
   }
 `;
 
-const ContactButton = styled.a`
-  text-decoration: none;
-  padding: 12px 30px;
+const LanguageButtonContainer = styled.div`
+  display: flex;
+  gap: 8px;
+  position: fixed;
+  right: 20px;
+  top: 10px;
+  z-index: 20;
+
+  @media (max-width: 768px) {
+    top: 5px;
+    right: 10px;
+  }
+`;
+
+const LanguageButton = styled.button`
+  margin-left: 5px;
+  padding: 4px 8px;
   background-color: var(--oldpurple);
   color: white;
+  border: none;
+  border-radius: 20px;
   font-weight: bold;
-  font-size: 1.2rem;
-  border-radius: 30px;
-  transition: background-color 0.3s, transform 0.2s;
-  display: inline-block;
-  margin-left: 5px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
 
   &:hover {
     background-color: var(--pink);
-    transform: scale(1.05);
   }
-`;
 
-const Title = styled.a`
-  font-size: 2rem;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-  display: flex;
-  gap: 0.5rem; /* Espaço entre as palavras e tags */
-  text-decoration: none;
-  
-
-  span {
-    &:first-child {
-      color: var(--oldpink);
-    }
-    &:last-child {
-      color: var(--oldpurple);
-    }
+  @media (max-width: 768px) {
+    font-size: 0.7rem;
+    padding: 4px 6px;
   }
 `;
 
 const Header: React.FC = () => {
+  const { t, i18n } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
+
+  const changeLanguage = (lang: string) => {
+    i18n.changeLanguage(lang);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 300) { // Ajuste o valor conforme necessário para o "hero"
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
+      setIsVisible(window.scrollY > 300);
     };
 
     window.addEventListener('scroll', handleScroll);
-
-    // Limpeza do event listener ao desmontar
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const currentLang = i18n.language;
 
   return (
     <>
       <GlobalStyle />
       <HeaderStyle isVisible={isVisible}>
-        <Title href="#Home">
-          <span>&lt;Fernanda</span>
-          <span>Gabrielli/&gt;</span>
-        </Title>
+        <FG href="#Home">&lt;FG /&gt;</FG>
+
         <NavContainer>
-          <NavLinkSobre href="#AboutMe">Quem sou</NavLinkSobre>
-          <NavLink href="#ProjectsSection">Projetos</NavLink>
+          <NavLink href="#AboutMe">{t('header.who')}</NavLink>
+          <NavLink href="#ProjectsSection">{t('header.projects')}</NavLink>
+          <NavLink href="#contact">{t('header.contact')}</NavLink>
         </NavContainer>
-        <ContactButton href="#contact">Contato</ContactButton>
       </HeaderStyle>
+
+      <LanguageButtonContainer>
+        <LanguageButton
+          onClick={() => changeLanguage(currentLang === 'pt' ? 'en' : 'pt')}
+        >
+          {currentLang === 'pt' ? 'EN-US' : 'PT'}
+        </LanguageButton>
+      </LanguageButtonContainer>
     </>
   );
 };
